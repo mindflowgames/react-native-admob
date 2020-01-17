@@ -1,5 +1,6 @@
 #import "RNAdMobRewarded.h"
 #import "RNAdMobUtils.h"
+#import "RNCustomUtils.h"
 
 #if __has_include(<React/RCTUtils.h>)
 #import <React/RCTUtils.h>
@@ -77,9 +78,9 @@ RCT_EXPORT_METHOD(requestAd:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromise
 RCT_EXPORT_METHOD(showAd:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
     if ([[GADRewardBasedVideoAd sharedInstance] isReady]) {
-        UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
-        UIViewController *rootViewController = [keyWindow rootViewController];
-        [[GADRewardBasedVideoAd sharedInstance] presentFromRootViewController:rootViewController];
+//        UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+//        UIViewController *rootViewController = [keyWindow rootViewController];
+        [[GADRewardBasedVideoAd sharedInstance] presentFromRootViewController:[RNCustomUtils topViewController]];
         resolve(nil);
     }
     else {

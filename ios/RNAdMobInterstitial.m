@@ -1,5 +1,6 @@
 #import "RNAdMobInterstitial.h"
 #import "RNAdMobUtils.h"
+#import "RNCustomUtils.h"
 
 #if __has_include(<React/RCTUtils.h>)
 #import <React/RCTUtils.h>
@@ -82,7 +83,7 @@ RCT_EXPORT_METHOD(requestAd:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromise
 RCT_EXPORT_METHOD(showAd:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
     if ([_interstitial isReady]) {
-        [_interstitial presentFromRootViewController:[UIApplication sharedApplication].delegate.window.rootViewController];
+        [_interstitial presentFromRootViewController:[RNCustomUtils topViewController]];
         resolve(nil);
     }
     else {
